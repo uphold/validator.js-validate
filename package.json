@@ -1,0 +1,40 @@
+{
+  "name": "validator.js-validate",
+  "version": "0.0.0",
+  "description": "Opinionated object validation function based on validator.js",
+  "author": "Uphold Inc.",
+  "main": "dist/index.js",
+  "repository": "git@github.com:uphold/validator.js-validate.git",
+  "scripts": {
+    "build": "rm -rf dist && babel src -d dist",
+    "changelog": "github-changelog-generator --owner uphold --repo validator.js-validate --future-release=v$npm_package_version > CHANGELOG.md",
+    "cover": "yarn test -- --coverage",
+    "lint": "eslint --cache src test",
+    "release": "npm version $1 -m 'Release %s'",
+    "test": "NODE_ENV=test jest --config jest.json --env node",
+    "version": "yarn build && yarn changelog && git add dist CHANGELOG.md"
+  },
+  "dependencies": {
+    "lodash.isplainobject": "4.0.6",
+    "lodash.reduce": "4.6.0",
+    "validator.js": "2.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "6.23.0",
+    "babel-core": "6.23.1",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "babel-preset-es2015-node": "4.0.2",
+    "eslint": "3.17.0",
+    "eslint-config-seegno": "8.0.1",
+    "jest": "19.0.2",
+    "pre-commit": "1.2.2"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "private": true,
+  "pre-commit": [
+    "lint"
+  ]
+}
