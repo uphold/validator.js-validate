@@ -1,6 +1,6 @@
 {
   "name": "validator.js-validate",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Opinionated object validation function based on validator.js",
   "author": "Uphold Inc.",
   "main": "dist/index.js",
