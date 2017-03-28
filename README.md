@@ -2,6 +2,24 @@
 
 Opinionated object validation function based on [validator.js](https://github.com/guillaumepotier/validator.js).
 
+## Status
+
+[![npm version][npm-image]][npm-url] ![node version][node-image] [![build status][travis-image]][travis-url]
+
+## Installation
+
+Install the package via `yarn`:
+
+```sh
+$ yarn add validator.js-validate
+```
+
+or via `npm`:
+
+```sh
+$ npm install validator.js-validate --save
+```
+
 ## Usage
 
 ### Create validate function
@@ -124,11 +142,9 @@ To test check coverage use the `cover` script:
 $ yarn cover
 ```
 
-A full coverage report will be generated on *test/coverage* folder.
+A full coverage report will be generated on the *coverage* folder.
 
 ## Release
-
-Make sure you have [github-changelog-generator](https://github.com/uphold/github-changelog-generator) globally installed and run:
 
 ```sh
 $ yarn release [<version> | major | minor | patch]
@@ -136,4 +152,10 @@ $ yarn release [<version> | major | minor | patch]
 
 ## License
 
-Private
+[MIT](/LICENSE)
+
+[node-image]: https://img.shields.io/node/v/validator.js-validate.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/validator.js-validate.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/validator.js-validate
+[travis-image]: https://img.shields.io/travis/uphold/validator.js-validate/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/uphold/validator.js-validate
