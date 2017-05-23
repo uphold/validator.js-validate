@@ -27,16 +27,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function maskDataFromConstraints(data, constraints) {
   return (0, _lodash4.default)(constraints, (result, values, key) => {
+    if (Array.isArray(data)) {
+      const nodes = constraints.constraint.nodes;
+
+
+      return data.map(element => {
+        return nodes ? maskDataFromConstraints(element, nodes) : element;
+      });
+    }
+
     // Skip non existent key.
     if (!data.hasOwnProperty(key)) {
       return result;
     }
 
-    const hasDeeperConstraints = (0, _lodash2.default)(values);
+    // eslint-disable-next-line no-underscore-dangle
+    const hasDeeperConstraints = (0, _lodash2.default)(values) || values.__class__ === 'Collection';
     const value = data[key];
 
-    // Skip value that is not an object and has deeper constraints.
-    if (hasDeeperConstraints && !(0, _lodash2.default)(value)) {
+    // Skip value that is not an object or array and has deeper constraints.
+    if (hasDeeperConstraints && !(0, _lodash2.default)(value) && !Array.isArray(value)) {
       return result;
     }
 
@@ -62,7 +72,8 @@ exports.default = ValidationFailedError => {
     var _ref$throws = _ref.throws;
     let throws = _ref$throws === undefined ? true : _ref$throws;
 
-    const errors = validator.validate(data, new _validator.Constraint(constraints, { deepRequired: true }), groups);
+    const constraint = constraints instanceof _validator.Assert ? constraints : new _validator.Constraint(constraints, { deepRequired: true });
+    const errors = validator.validate(data, constraint, groups);
 
     if (errors === true) {
       return mask ? maskDataFromConstraints(data, constraints) : true;

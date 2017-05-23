@@ -1,6 +1,6 @@
 {
   "name": "validator.js-validate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Opinionated object validation function based on validator.js",
   "homepage": "http://uphold.github.io/validator.js-validate",
   "bugs": "https://github.com/uphold/validator.js-validate/issues",
