@@ -58,6 +58,34 @@ describe('.validate()', () => {
       });
     });
 
+    it('should mask collections', () => {
+      const data = [{
+        bar: ['biz'],
+        baz: [{
+          bez: 'buz',
+          qux: 'qix'
+        }],
+        foo: 'baz',
+        qox: 'qux'
+      }];
+
+      const constraint = is.collection({
+        bar: is.collection(is.notBlank()),
+        baz: is.collection({
+          bez: is.notBlank()
+        }),
+        foo: is.required()
+      });
+
+      expect(validate(data, constraint)).toEqual([{
+        bar: ['biz'],
+        baz: [{
+          bez: 'buz'
+        }],
+        foo: 'baz'
+      }]);
+    });
+
     it('should return `true` if `mask` option is given as `false`', () => {
       expect(validate({ foo: {} }, { foo: is.required() }, { mask: false })).toBe(true);
     });
