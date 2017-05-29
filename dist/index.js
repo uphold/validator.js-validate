@@ -64,15 +64,17 @@ exports.default = ValidationFailedError => {
   const validator = new _validator.Validator();
 
   return function (data, constraints) {
-    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+        _ref$deepRequired = _ref.deepRequired;
 
-    let groups = _ref.groups;
+    let deepRequired = _ref$deepRequired === undefined ? true : _ref$deepRequired,
+        groups = _ref.groups;
     var _ref$mask = _ref.mask;
     let mask = _ref$mask === undefined ? true : _ref$mask;
     var _ref$throws = _ref.throws;
     let throws = _ref$throws === undefined ? true : _ref$throws;
 
-    const constraint = constraints instanceof _validator.Assert ? constraints : new _validator.Constraint(constraints, { deepRequired: true });
+    const constraint = constraints instanceof _validator.Assert ? constraints : new _validator.Constraint(constraints, { deepRequired: deepRequired });
     const errors = validator.validate(data, constraint, groups);
 
     if (errors === true) {
