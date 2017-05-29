@@ -28,6 +28,10 @@ describe('.validate()', () => {
       expect(errors.foo.show().assert).toBe('HaveProperty');
     });
 
+    it('should not validate given `constraint` with `deepRequired` option if provided as `false`', () => {
+      expect(validate({}, { foo: { bar: is.required() } }, { deepRequired: false })).toEqual({});
+    });
+
     it('should returned given `data` masked with given `constraint` keys', () => {
       const data = {
         bar: {

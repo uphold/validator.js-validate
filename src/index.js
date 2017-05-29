@@ -49,8 +49,8 @@ function maskDataFromConstraints(data, constraints) {
 export default ValidationFailedError => {
   const validator = new Validator();
 
-  return (data, constraints, { groups, mask = true, throws = true } = {}) => {
-    const constraint = constraints instanceof Assert ? constraints : new Constraint(constraints, { deepRequired: true });
+  return (data, constraints, { deepRequired = true, groups, mask = true, throws = true } = {}) => {
+    const constraint = constraints instanceof Assert ? constraints : new Constraint(constraints, { deepRequired });
     const errors = validator.validate(data, constraint, groups);
 
     if (errors === true) {
