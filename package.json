@@ -23,7 +23,7 @@
   "dependencies": {
     "lodash.isplainobject": "4.0.6",
     "lodash.reduce": "4.6.0",
-    "validator.js": "2.0.3"
+    "validator.js": "git+ssh://git@github.com/ricardogama/validator.js#feature/extend-assert-static-methods"
   },
   "devDependencies": {
     "@uphold/github-changelog-generator": "0.4.1",
